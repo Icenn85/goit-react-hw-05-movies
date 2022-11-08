@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Circles } from 'react-loader-spinner';
-import { MoviesList } from '../../components/MoviesList/MoviesList';
-import { Wrapper, Header } from './Home.styled';
-import { getTrendingMovies } from '../../services/api';
+import { StyledLink } from './Home.styled';
+import { getTrendingMovies } from '../services/api';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -15,8 +14,8 @@ const Home = () => {
   const fetchMovies = async () => {
     setIsLoading(true);
     try {
-      const apiHome = await getTrendingMovies();
-      setMovies(apiHome.results);
+      const { data } = await getTrendingMovies();
+      setMovies(data.results);
     } catch (error) {
     } finally {
       setIsLoading(false);
@@ -24,7 +23,7 @@ const Home = () => {
   };
 
   return (
-    <Wrapper>
+    <main>
       {isLoading && (
         <div>
           <Circles
@@ -35,9 +34,15 @@ const Home = () => {
           />
         </div>
       )}
-      <Header>Trending today</Header>
-      {movies && <MoviesList movies={movies} />}
-    </Wrapper>
+      <h1>Today's trending</h1>
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>
+            <StyledLink to={`/movies/${movie.id}`}>{movie.title}</StyledLink>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 };
 
