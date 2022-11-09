@@ -2,16 +2,17 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Navigation from '../Navigation/Navigation';
+import { Header } from './AppBar.styled';
 
 const AppBar = () => {
   return (
     <div>
-      <header>
+      <Header>
         <Navigation />
-      </header>
+      </Header>
       <Suspense fallback="">
         <Outlet />
-      </Suspense>{' '}
+      </Suspense>
       <div>
         <Toaster />
       </div>

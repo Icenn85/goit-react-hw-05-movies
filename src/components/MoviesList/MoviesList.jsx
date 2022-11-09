@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-
 import { useLocation } from 'react-router-dom';
 import { StyledMovieList } from './MoviesList.styled';
 

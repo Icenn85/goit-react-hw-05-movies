@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-
 import { Input, FormButton } from './SearchBox.styled';
 
 export const SearchBox = ({ onSubmit }) => {

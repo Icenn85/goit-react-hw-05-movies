@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-
 import { ReviewAuthor, ReviewText } from './ReviewItem.styled';
 
 export const ReviewItem = ({ reviews }) => {

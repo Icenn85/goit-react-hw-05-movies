@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  margin-right: 10px;
+  margin-left: 25px;
   height: 20px;
   padding-left: 10px;
   border: 1px solid rgba(33, 33, 33, 0.2);
@@ -15,11 +15,12 @@ export const Input = styled.input`
 `;
 
 export const FormButton = styled.button`
-  height: 20px;
+  height: 25px;
   color: #000;
   border: none;
   border-radius: 5px;
   padding: 0px 25px;
+  margin-left: 15px;
   background: #47a8f5;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -29,7 +30,7 @@ export const FormButton = styled.button`
   outline: none;
 
   &:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 100px;
   }
 
   &:hover {

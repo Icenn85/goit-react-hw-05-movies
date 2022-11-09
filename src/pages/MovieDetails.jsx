@@ -5,7 +5,11 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { Circles } from 'react-loader-spinner';
 import { getMovieDetails } from '../services/api';
 import { MovieInfo } from '../components/MovieInfo/MovieInfo';
-import { AddInfoText, StyledLink, GoBackBtn } from './MoviesDetails.styled';
+import {
+  Layout, AddInfoText,
+  StyledLink,
+  GoBackBtn,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -30,10 +34,9 @@ const MovieDetails = () => {
   };
 
   return (
-    <main>
+    <Layout>
       <section>
         <GoBackBtn to={location?.state?.from ?? '/'}>
-          {' '}
           <FaArrowLeft /> Go back
         </GoBackBtn>
         {isLoading && (
@@ -68,7 +71,7 @@ const MovieDetails = () => {
       <hr />
 
       <Outlet />
-    </main>
+    </Layout>
   );
 };
 

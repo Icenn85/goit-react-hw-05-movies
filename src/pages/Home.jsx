@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Circles } from 'react-loader-spinner';
-import { StyledLink } from './Home.styled';
+import { Layout, StyledLink } from './Home.styled';
 import { getTrendingMovies } from '../services/api';
 
 const Home = () => {
@@ -23,7 +23,7 @@ const Home = () => {
   };
 
   return (
-    <main>
+    <Layout>
       {isLoading && (
         <div>
           <Circles
@@ -42,7 +42,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
-    </main>
+    </Layout>
   );
 };
 

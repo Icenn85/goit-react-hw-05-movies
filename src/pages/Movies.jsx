@@ -4,12 +4,13 @@ import { useSearchParams } from 'react-router-dom';
 import { Circles } from 'react-loader-spinner';
 import { getSearchMovies } from '../services/api';
 import { MoviesList } from '../components/MoviesList/MoviesList';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (query) {
@@ -19,6 +20,7 @@ const Movies = () => {
           const { data } = await getSearchMovies(query);
           setMovies(data.results);
         } catch (error) {
+          toast.error('Enter correct movie title!');
         } finally {
           setIsLoading(false);
         }
@@ -27,13 +29,16 @@ const Movies = () => {
     }
   }, [query]);
 
-  const onHandleSubmit = evt => {
+  const onHandleSubmit = (evt, query) => {
     evt.preventDefault();
-    setSearchParams({ query: evt.currentTarget.elements.query.value });
+    const searchQuery = query !== '' ? { query } : {};
+    setSearchParams({ searchQuery });
+    setMovies([]);
   };
 
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={true} />
       <SearchBox onSubmit={onHandleSubmit} />
       {isLoading && (
         <div>
@@ -45,7 +50,12 @@ const Movies = () => {
           />
         </div>
       )}
-      <MoviesList movies={movies} />
+      {movies?.length > 0 && <MoviesList movies={movies} />}
+      {movies?.length === 0 && query !== '' && (
+        <p>
+          Sorry, there is no films for your results! Try to find something else!
+        </p>
+      )}
     </div>
   );
 };
