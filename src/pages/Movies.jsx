@@ -29,10 +29,8 @@ const Movies = () => {
     }
   }, [query]);
 
-  const onHandleSubmit = (evt, query) => {
-    evt.preventDefault();
-    const searchQuery = query !== '' ? { query } : {};
-    setSearchParams({ searchQuery });
+  const onHandleSubmit = (query) => {
+    setSearchParams({ query });
     setMovies([]);
   };
 
@@ -50,8 +48,8 @@ const Movies = () => {
           />
         </div>
       )}
-      {movies?.length > 0 && <MoviesList movies={movies} />}
-      {movies?.length === 0 && query !== '' && (
+      {movies.length > 0 && <MoviesList movies={movies} />}
+      {movies.length === 0 && query !== '' && (
         <p>
           Sorry, there is no films for your results! Try to find something else!
         </p>
