@@ -11,7 +11,6 @@ const Reviews = lazy(() => import('../pages/Reviews'));
 export const App = () => {
   return (
     <div>
-      {/* <AppBar /> */}
       <Routes>
         <Route path="/" element={<AppBar />}>
           <Route index element={<Home />}></Route>

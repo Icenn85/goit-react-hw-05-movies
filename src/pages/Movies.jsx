@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Circles } from 'react-loader-spinner';
 import { getSearchMovies } from '../services/api';
 import { MoviesList } from '../components/MoviesList/MoviesList';
-import toast, { Toaster } from 'react-hot-toast';
+
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +20,6 @@ const Movies = () => {
           const { data } = await getSearchMovies(query);
           setMovies(data.results);
         } catch (error) {
-          toast.error('Enter correct movie title!');
         } finally {
           setIsLoading(false);
         }
@@ -36,7 +35,7 @@ const Movies = () => {
 
   return (
     <div>
-      <Toaster position="top-center" reverseOrder={true} />
+      
       <SearchBox onSubmit={onHandleSubmit} />
       {isLoading && (
         <div>

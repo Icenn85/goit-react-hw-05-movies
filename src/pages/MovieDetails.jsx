@@ -56,13 +56,13 @@ const MovieDetails = () => {
         <AddInfoText>Additional information:</AddInfoText>
 
         <StyledLink
-          to={`/movies/${movieId}/cast`}
+          to={`cast`}
           state={{ from: location?.state?.from }}
         >
            Cast 
         </StyledLink>
         <StyledLink
-          to={`/movies/${movieId}/reviews`}
+          to={`reviews`}
           state={{ from: location?.state?.from }}
         >
            Reviews 
